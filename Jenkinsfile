@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-username/delhi-electricity-demand.git'
+                git 'https://github.com/ArcaneNova/Delhi-Electricity-Demand.git'
             }
         }
 
