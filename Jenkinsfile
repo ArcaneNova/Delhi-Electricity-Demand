@@ -9,10 +9,10 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            steps {
-                git 'https://github.com/ArcaneNova/Delhi-Electricity-Demand.git'
-            }
-        }
+    steps {
+        git branch: 'main', url: 'https://github.com/ArcaneNova/Delhi-Electricity-Demand.git'
+    }
+}
 
         stage('Build Docker Images') {
             steps {
