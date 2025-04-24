@@ -6,14 +6,14 @@ services:
       - "3000:3000"
     depends_on:
       - backend
-  
+
   backend:
     build: ./backend
     ports:
       - "8000:8000"
     depends_on:
       - mongodb
-  
+
   mongodb:
     image: mongo
     container_name: mongodb
@@ -22,5 +22,16 @@ services:
     volumes:
       - mongodb_data:/data/db
 
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8080:8080"          # Jenkins UI
+      - "50000:50000"        # For Jenkins agent communication
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock  # 👈 Give Jenkins access to host Docker
+
 volumes:
   mongodb_data:
+  jenkins_home:
