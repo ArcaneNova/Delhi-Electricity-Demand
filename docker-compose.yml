@@ -4,23 +4,24 @@ services:
     build: ./frontend
     ports:
       - "3000:3000"
-    depends_on:
-      - backend
+    # depends_on:
+    #   - backend
+    # If you want to run the backend, uncomment the above lines and specify the dependencies.
 
-  backend:
-    build: ./backend
-    ports:
-      - "8000:8000"
-    depends_on:
-      - mongodb
+  # backend:
+  #   build: ./backend
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     - mongodb
 
-  mongodb:
-    image: mongo
-    container_name: mongodb
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongodb_data:/data/db
+  # mongodb:
+  #   image: mongo
+  #   container_name: mongodb
+  #   ports:
+  #     - "27017:27017"
+  #   volumes:
+  #     - mongodb_data:/data/db
 
   jenkins:
     image: jenkins/jenkins:lts
@@ -33,5 +34,5 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock  # 👈 Give Jenkins access to host Docker
 
 volumes:
-  mongodb_data:
+  # mongodb_data:
   jenkins_home:
